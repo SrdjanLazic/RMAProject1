@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">RMAProject1</string>
+    <string name="usernameHint">Username</string>
+    <string name="passwordHint">Password</string>
+    <string name="loginButtonText">Login</string>
+    <string name="emailHint">Email</string>
+    <string name="loginScreenText">Jira system for RAF students</string>
+    <string name="usernameDisplay">TextView</string>
+    <string name="emailDisplay"><u>TextView</u></string>
+    <string name="logoutButtonText">Log out</string>
+    <string name="statsBottomNav">Stats</string>
+    <string name="newBottomNav">New</string>
+    <string name="ticketsBottomNav">Tickets</string>
+    <string name="profileBottomNav">Profile</string>
+    <string name="est">Est.</string>
+    <string name="ticket_title">Ticket title</string>
+    <string name="ticket_description">Ticket description</string>
+    <string name="add_new_ticket">Add new ticket</string>
+    <string name="search">Search...</string>
+
+    <string-array name="ticket_type">
+        <item>Bug</item>
+        <item>Enhancement</item>
+    </string-array>
+
+    <string-array name="priority">
+        <item>Highest</item>
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+        <item>Lowest</item>
+    </string-array>
+
+</resources>
