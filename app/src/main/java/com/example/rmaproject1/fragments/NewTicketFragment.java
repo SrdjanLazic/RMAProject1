@@ -18,9 +18,10 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.rmaproject1.R;
 import com.example.rmaproject1.model.Ticket;
+import com.example.rmaproject1.model.TicketStatus;
 import com.example.rmaproject1.viewmodels.SharedViewModel;
 
-public class NewFragment extends Fragment {
+public class NewTicketFragment extends Fragment {
 
     private Spinner prioritySpinner;
     private Spinner typeSpinner;
@@ -30,7 +31,9 @@ public class NewFragment extends Fragment {
     private EditText ticketDescription;
     private SharedViewModel sharedViewModel;
 
-    public NewFragment() {
+    // TODO Save instnace state rotate
+
+    public NewTicketFragment() {
         super(R.layout.fragment_addnewticket);
     }
 
@@ -77,13 +80,23 @@ public class NewFragment extends Fragment {
         addTicket.setOnClickListener(v -> {
             if(checkFields()){
                 Ticket ticket = new Ticket(ID_COUNTER++, ticketName.getText().toString(), ticketDescription.getText().toString(),
-                        Integer.parseInt(estimatedTime.getText().toString()), prioritySpinner.getSelectedItem().toString(),  typeSpinner.getSelectedItem().toString());
+                        Integer.parseInt(estimatedTime.getText().toString()), prioritySpinner.getSelectedItem().toString(),  typeSpinner.getSelectedItem().toString(), TicketStatus.TODO);
                 sharedViewModel.addTicket(ticket);
+                Toast.makeText(this.getActivity(), "New ticket added.",
+                        Toast.LENGTH_LONG).show();
+                clearAllFields();
             } else {
                 Toast.makeText(this.getActivity(), "You have to fill in all the fields first.",
                         Toast.LENGTH_LONG).show();
             }
+
         });
+    }
+
+    private void clearAllFields(){
+        ticketName.getText().clear();
+        ticketDescription.getText().clear();
+        estimatedTime.getText().clear();
     }
 
     private void initObservers() {

@@ -4,9 +4,9 @@
     <string name="passwordHint">Password</string>
     <string name="loginButtonText">Login</string>
     <string name="emailHint">Email</string>
-    <string name="loginScreenText">Jira system for RAF students</string>
-    <string name="usernameDisplay">TextView</string>
-    <string name="emailDisplay"><u>TextView</u></string>
+    <string name="loginScreenText">RAF Jira</string>
+    <string name="usernameDisplay" translatable="false">TextView</string>
+    <string name="emailDisplay" translatable="false"><u>TextView</u></string>
     <string name="logoutButtonText">Log out</string>
     <string name="statsBottomNav">Stats</string>
     <string name="newBottomNav">New</string>
@@ -16,7 +16,16 @@
     <string name="ticket_title">Ticket title</string>
     <string name="ticket_description">Ticket description</string>
     <string name="add_new_ticket">Add new ticket</string>
-    <string name="search">Search...</string>
+    <string name="search">Search…</string>
+    <string name="statistics_fragment_title">RAF Jira Statistics</string>
+    <string name="todo">ToDo</string>
+    <string name="enhancements">Enhancements</string>
+    <string name="bugs">Bugs</string>
+    <string name="statistics_fragment_placeholder" translatable="false">TextView</string>
+    <string name="ticket_type">Ticket type</string>
+    <string name="edit_ticket">Edit</string>
+    <string name="edit_ticket_title">Edit ticket</string>
+    <string name="edit_ticket_button_text">Save</string>
 
     <string-array name="ticket_type">
         <item>Bug</item>

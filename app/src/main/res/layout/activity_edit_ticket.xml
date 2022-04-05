@@ -14,63 +14,34 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView2Edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add_new_ticket"
-            android:layout_marginTop="24dp"
+            android:text="@string/edit_ticket_title"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/spinnerPriority"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerPriorityEdit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.300" />
 
-        <Button
-            android:id="@+id/addNewTicketButton"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="42dp"
-            android:layout_marginRight="32dp"
-            android:text="@string/add_new_ticket"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="64dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ticketDescription"
-            app:layout_constraintVertical_bias="0.011" />
-
         <Spinner
-            android:id="@+id/spinnerPriority"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="180dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.059"
-            app:layout_constraintStart_toEndOf="@+id/spinnerType"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Spinner
-            android:id="@+id/spinnerType"
+            android:id="@+id/spinnerTypeEdit"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="180dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/ticketTitle"
+            app:layout_constraintStart_toStartOf="@+id/ticketTitleEdit"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/estimatedTime"
+            android:id="@+id/estimatedTimeEdit"
             android:layout_width="56dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-
             android:layout_marginTop="168dp"
             android:layout_marginEnd="32dp"
             android:ems="10"
@@ -78,11 +49,23 @@
             android:inputType="numberSigned"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/spinnerPriority"
+            app:layout_constraintStart_toEndOf="@+id/spinnerPriorityEdit"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinnerPriorityEdit"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="180dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.059"
+            app:layout_constraintStart_toEndOf="@+id/spinnerTypeEdit"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/ticketTitle"
+            android:id="@+id/ticketTitleEdit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
@@ -93,10 +76,10 @@
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerType" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerTypeEdit" />
 
         <EditText
-            android:id="@+id/ticketDescription"
+            android:id="@+id/ticketDescriptionEdit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
@@ -107,7 +90,22 @@
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ticketTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/ticketTitleEdit" />
+
+        <Button
+            android:id="@+id/saveTicketButtonEdit"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="42dp"
+            android:layout_marginRight="32dp"
+            android:text="@string/edit_ticket_button_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="64dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ticketDescriptionEdit"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -14,9 +14,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,20 +21,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.rmaproject1.R;
 import com.example.rmaproject1.activities.TicketDetailsActivity;
 import com.example.rmaproject1.model.Ticket;
-import com.example.rmaproject1.model.User;
 import com.example.rmaproject1.recycler.adapter.TicketAdapter;
 import com.example.rmaproject1.recycler.differ.TicketDiffItemCallback;
 import com.example.rmaproject1.viewmodels.SharedViewModel;
 
-public class ToDoFragment extends Fragment {
+public class DoneFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private SharedViewModel sharedViewModel;
     private TicketAdapter ticketAdapter;
-    private EditText searchTODOTickets;
+    private EditText searchDoneTickets;
 
-    public ToDoFragment() {
-        super(R.layout.fragment_todo);
+    public DoneFragment() {
+        super(R.layout.fragment_done);
     }
 
     @Override
@@ -50,17 +46,16 @@ public class ToDoFragment extends Fragment {
     }
 
     private void initView(View view){
-        recyclerView = view.findViewById(R.id.listRvTodo);
-        searchTODOTickets = view.findViewById(R.id.searchTODOTickets);
+        recyclerView = view.findViewById(R.id.listRvDone);
+        searchDoneTickets = view.findViewById(R.id.searchDoneTickets);
     }
 
     private void initObservers() {
-
-        sharedViewModel.getTodoTickets().observe(getViewLifecycleOwner(), tickets -> {
+        sharedViewModel.getDoneTickets().observe(getViewLifecycleOwner(), tickets -> {
             ticketAdapter.submitList(tickets);
         });
 
-        searchTODOTickets.addTextChangedListener(new TextWatcher() {
+        searchDoneTickets.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -71,7 +66,7 @@ public class ToDoFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                sharedViewModel.searchToDoTickets(s.toString());
+                sharedViewModel.searchDoneTickets(s.toString());
             }
         });
     }
@@ -86,8 +81,10 @@ public class ToDoFragment extends Fragment {
                 }
             });
 
+
     private void initRecycler() {
         ticketAdapter = new TicketAdapter(sharedViewModel, new TicketDiffItemCallback(), ticket -> {
+            //Toast.makeText(getActivity(), ticket.getId() + "", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getActivity(), TicketDetailsActivity.class);
             intent.putExtra("ticket", ticket);
             //startActivity(intent);

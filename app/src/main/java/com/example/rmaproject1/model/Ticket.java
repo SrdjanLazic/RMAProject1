@@ -1,6 +1,9 @@
 package com.example.rmaproject1.model;
 
-public class Ticket {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Ticket implements Parcelable {
 
     private Integer id;
     private String title;
@@ -9,9 +12,9 @@ public class Ticket {
     private String priority;
     private String ticketType;
     private Integer loggedTime;
-    private String status;
+    private TicketStatus status;
 
-    public Ticket(Integer id, String title, String description, Integer estimatedTime, String priority, String ticketType) {
+    public Ticket(Integer id, String title, String description, Integer estimatedTime, String priority, String ticketType, TicketStatus status) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -19,7 +22,43 @@ public class Ticket {
         this.priority = priority;
         this.ticketType = ticketType;
         this.loggedTime = 0;
+        this.status = status;
     }
+
+    protected Ticket(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readInt();
+        }
+        title = in.readString();
+        description = in.readString();
+        if (in.readByte() == 0) {
+            estimatedTime = null;
+        } else {
+            estimatedTime = in.readInt();
+        }
+        priority = in.readString();
+        ticketType = in.readString();
+        if (in.readByte() == 0) {
+            loggedTime = null;
+        } else {
+            loggedTime = in.readInt();
+        }
+        status = TicketStatus.values()[in.readInt()];
+    }
+
+    public static final Creator<Ticket> CREATOR = new Creator<Ticket>() {
+        @Override
+        public Ticket createFromParcel(Parcel in) {
+            return new Ticket(in);
+        }
+
+        @Override
+        public Ticket[] newArray(int size) {
+            return new Ticket[size];
+        }
+    };
 
     public String getTitle() {
         return title;
@@ -77,6 +116,14 @@ public class Ticket {
         this.id = id;
     }
 
+    public TicketStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(TicketStatus status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Ticket{" +
@@ -87,6 +134,44 @@ public class Ticket {
                 ", priority='" + priority + '\'' +
                 ", ticketType='" + ticketType + '\'' +
                 ", loggedTime=" + loggedTime +
+                ", status=" + status +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+        if (id == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(id);
+        }
+        parcel.writeString(title);
+        parcel.writeString(description);
+        if (estimatedTime == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(estimatedTime);
+        }
+        parcel.writeString(priority);
+        parcel.writeString(ticketType);
+        if (loggedTime == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(loggedTime);
+        }
+        parcel.writeInt(status.ordinal());
+    }
+
+    public static void updateTicket(Ticket original, Ticket update){
+
     }
 }

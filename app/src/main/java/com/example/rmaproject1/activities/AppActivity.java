@@ -38,6 +38,7 @@ public class AppActivity extends AppCompatActivity {
 
     private void initViewPager() {
         viewPager = findViewById(R.id.viewPager);
+        viewPager.setOffscreenPageLimit(4);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
     }
 
@@ -52,5 +53,6 @@ public class AppActivity extends AppCompatActivity {
             }
             return true;
         });
+
     }
 }

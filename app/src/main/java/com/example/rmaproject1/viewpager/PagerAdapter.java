@@ -6,11 +6,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.rmaproject1.fragments.NewFragment;
+import com.example.rmaproject1.fragments.NewTicketFragment;
 import com.example.rmaproject1.fragments.ProfileFragment;
 import com.example.rmaproject1.fragments.StatsFragment;
-import com.example.rmaproject1.fragments.TicketsFragment;
-import com.example.rmaproject1.fragments.ToDoFragment;
+import com.example.rmaproject1.fragments.TabFragment;
 
 
 public class PagerAdapter extends FragmentPagerAdapter {
@@ -32,8 +31,8 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case FRAGMENT_1: fragment = new StatsFragment(); break;
-            case FRAGMENT_2: fragment = new NewFragment(); break;
-            case FRAGMENT_3: fragment = new ToDoFragment(); break;
+            case FRAGMENT_2: fragment = new NewTicketFragment(); break;
+            case FRAGMENT_3: fragment = new TabFragment(); break;
             case FRAGMENT_4: fragment = new ProfileFragment(); break;
             default:
                 throw new IllegalStateException("Unexpected value: " + position);

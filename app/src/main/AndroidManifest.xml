@@ -10,8 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RMAProject1">
         <activity
-            android:name=".activities.AppActivity"
+            android:name=".activities.TicketDetailsActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.EditTicketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AppActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.LoginActivity"
             android:exported="false" />

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RMAProject1</string>
+    <string name="usernameHint">Korisničko ime</string>
+    <string name="passwordHint">Lozinka</string>
+    <string name="loginButtonText">Prijava</string>
+    <string name="emailHint">Email</string>
+    <string name="loginScreenText">RAF Jira</string>
+    <string name="logoutButtonText">Odjava</string>
+    <string name="statsBottomNav">Statistika</string>
+    <string name="newBottomNav">Novo</string>
+    <string name="ticketsBottomNav">Tiketi</string>
+    <string name="profileBottomNav">Profil</string>
+    <string name="est">Predviđeno</string>
+    <string name="ticket_title">Naslov</string>
+    <string name="ticket_description">Opis</string>
+    <string name="add_new_ticket">Dodaj novi</string>
+    <string name="search">Pretraga…</string>
+    <string name="statistics_fragment_title">RAF Jira Statistika</string>
+    <string name="todo">Uraditi</string>
+    <string name="enhancements">Unapređenja</string>
+    <string name="bugs">Greške</string>
+    <string name="ticket_type">Tip tiketa</string>
+    <string name="edit_ticket">Izmena</string>
+    <string name="edit_ticket_title">Izmena tiketa</string>
+    <string name="edit_ticket_button_text">Sačuvaj</string>
+
+    <string-array name="ticket_type">
+        <item>Greška</item>
+        <item>Unapređenje</item>
+    </string-array>
+
+    <string-array name="priority">
+        <item>Najviši</item>
+        <item>Visok</item>
+        <item>Srednji</item>
+        <item>Nizak</item>
+        <item>Najniži</item>
+    </string-array>
+</resources>
