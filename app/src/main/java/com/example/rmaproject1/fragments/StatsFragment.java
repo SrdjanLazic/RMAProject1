@@ -76,15 +76,15 @@ public class StatsFragment extends Fragment {
     }
 
     private void initObservers(){
-        sharedViewModel.getInProgressTickets().observe(getViewLifecycleOwner(), tickets -> {
+        sharedViewModel.getInProgressTicketsFullList().observe(getViewLifecycleOwner(), tickets -> {
             updateValues();
         });
 
-        sharedViewModel.getDoneTickets().observe(getViewLifecycleOwner(), tickets -> {
+        sharedViewModel.getDoneTicketsFullList().observe(getViewLifecycleOwner(), tickets -> {
             updateValues();
         });
 
-        sharedViewModel.getTodoTickets().observe(getViewLifecycleOwner(), tickets -> {
+        sharedViewModel.getTodoTicketsFullList().observe(getViewLifecycleOwner(), tickets -> {
             updateValues();
         });
     }

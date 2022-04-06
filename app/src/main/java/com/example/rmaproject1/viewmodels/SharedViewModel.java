@@ -21,6 +21,9 @@ public class SharedViewModel extends ViewModel {
     private final MutableLiveData<List<Ticket>> doneTickets = new MutableLiveData<>();
     private final MutableLiveData<List<Ticket>> todoTickets = new MutableLiveData<>();
     private final MutableLiveData<List<Ticket>> inProgressTickets = new MutableLiveData<>();
+    private final MutableLiveData<List<Ticket>> doneTicketsFullList = new MutableLiveData<>();
+    private final MutableLiveData<List<Ticket>> inProgressTicketsFullList = new MutableLiveData<>();
+    private final MutableLiveData<List<Ticket>> todoTicketsFullList = new MutableLiveData<>();
     private List<Ticket> doneTicketsTemp = new ArrayList<>();
     private List<Ticket> todoTicketsTemp = new ArrayList<>();
     private List<Ticket> inProgressTicketsTemp = new ArrayList<>();
@@ -50,8 +53,12 @@ public class SharedViewModel extends ViewModel {
         ArrayList<Ticket> todoMediatorList = new ArrayList<>(todoTicketsTemp);
         ArrayList<Ticket> inProgressMediatorList = new ArrayList<>(inProgressTicketsTemp);
         doneTickets.setValue(doneMediatorList);
+        doneTicketsFullList.setValue(doneMediatorList);
         todoTickets.setValue(todoMediatorList);
+        todoTicketsFullList.setValue(todoMediatorList);
         inProgressTickets.setValue(inProgressMediatorList);
+        inProgressTicketsFullList.setValue(inProgressMediatorList);
+
     }
 
     public void searchDoneTickets(String searchTerm) {
@@ -78,21 +85,22 @@ public class SharedViewModel extends ViewModel {
             todoTicketsTemp.add(ticket);
             ArrayList<Ticket> listToSubmit = new ArrayList<>(todoTicketsTemp);
             todoTickets.setValue(listToSubmit);
+            todoTicketsFullList.setValue(listToSubmit);
             removeTicket(ticket, source);
         } else if(destination == TicketStatus.IN_PROGRESS){
             inProgressTicketsTemp.add(ticket);
             ArrayList<Ticket> listToSubmit = new ArrayList<>(inProgressTicketsTemp);
             inProgressTickets.setValue(listToSubmit);
+            inProgressTicketsFullList.setValue(listToSubmit);
             removeTicket(ticket, source);
         } else {
             doneTicketsTemp.add(ticket);
             ArrayList<Ticket> listToSubmit = new ArrayList<>(doneTicketsTemp);
             doneTickets.setValue(listToSubmit);
+            doneTicketsFullList.setValue(listToSubmit);
             removeTicket(ticket, source);
         }
     }
-
-    // TODO!
 
     public void updateTicket(Ticket ticket){
         System.out.println(ticket);
@@ -108,6 +116,7 @@ public class SharedViewModel extends ViewModel {
             }
             ArrayList<Ticket> listToSubmit = new ArrayList<>(todoTicketsTemp);
             todoTickets.setValue(listToSubmit);
+            todoTicketsFullList.setValue(listToSubmit);
         } else if(ticket.getStatus() == TicketStatus.IN_PROGRESS){
             Ticket toEdit = inProgressTicketsTemp.stream().filter(oldTicket -> oldTicket.getId().equals(ticket.getId())).findFirst().orElse(null);
             if(toEdit != null) {
@@ -120,6 +129,7 @@ public class SharedViewModel extends ViewModel {
             }
             ArrayList<Ticket> listToSubmit = new ArrayList<>(inProgressTicketsTemp);
             inProgressTickets.setValue(listToSubmit);
+            inProgressTicketsFullList.setValue(listToSubmit);
         } else {
             Ticket toEdit = doneTicketsTemp.stream().filter(oldTicket -> oldTicket.getId().equals(ticket.getId())).findFirst().orElse(null);
             if(toEdit != null) {
@@ -132,6 +142,7 @@ public class SharedViewModel extends ViewModel {
             }
             ArrayList<Ticket> listToSubmit = new ArrayList<>(doneTicketsTemp);
             doneTickets.setValue(listToSubmit);
+            doneTicketsFullList.setValue(listToSubmit);
         }
     }
 
@@ -147,10 +158,27 @@ public class SharedViewModel extends ViewModel {
         return inProgressTickets;
     }
 
+
+    public LiveData<List<Ticket>> getInProgressTicketsFullList() {
+        return inProgressTicketsFullList;
+    }
+
+    public LiveData<List<Ticket>> getDoneTicketsFullList() {
+        return doneTicketsFullList;
+    }
+
+    public LiveData<List<Ticket>> getTodoTicketsFullList() {
+        return todoTicketsFullList;
+    }
+
+
+
+
     public int addTicket(Ticket ticket) {
         todoTicketsTemp.add(ticket);
         ArrayList<Ticket> listToSubmit = new ArrayList<>(todoTicketsTemp);
         todoTickets.setValue(listToSubmit);
+        todoTicketsFullList.setValue(listToSubmit);
         return ticket.getId();
     }
 
@@ -159,14 +187,17 @@ public class SharedViewModel extends ViewModel {
             todoTicketsTemp.remove(toRemove);
             ArrayList<Ticket> listToSubmit = new ArrayList<>(todoTicketsTemp);
             todoTickets.setValue(listToSubmit);
+            todoTicketsFullList.setValue(listToSubmit);
         } else if(oldStatus == TicketStatus.IN_PROGRESS){
             inProgressTicketsTemp.remove(toRemove);
             ArrayList<Ticket> listToSubmit = new ArrayList<>(inProgressTicketsTemp);
             inProgressTickets.setValue(listToSubmit);
+            inProgressTicketsFullList.setValue(listToSubmit);
         } else {
             doneTicketsTemp.remove(toRemove);
             ArrayList<Ticket> listToSubmit = new ArrayList<>(doneTicketsTemp);
             doneTickets.setValue(listToSubmit);
+            doneTicketsFullList.setValue(listToSubmit);
         }
     }
 

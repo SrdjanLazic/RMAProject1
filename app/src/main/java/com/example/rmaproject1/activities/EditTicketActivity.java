@@ -37,7 +37,6 @@ public class EditTicketActivity extends AppCompatActivity {
         initView();
     }
 
-    // TODO Srediti view
     private void initView(){
         priority = findViewById(R.id.spinnerPriorityEdit);
         type = findViewById(R.id.spinnerTypeEdit);
